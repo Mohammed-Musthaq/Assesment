@@ -24,6 +24,7 @@ def login_page(context):
     take_screenshot(context.driver, "Demo Login Page")
 
 
+
 @when('I fill the account information for account StandardUser into the Username field and the Password field')
 def valid_credential(context):
     context.driver.find_element(By.ID, 'user-name').send_keys('standard_user')
