@@ -5,6 +5,7 @@ from selenium.webdriver.common.by import By
 import os
 from datetime import datetime
 
+
 def take_screenshot(driver, step_name):
     if not os.path.exists('screenshots'):
         os.makedirs('screenshots')
@@ -24,7 +25,6 @@ def login_page(context):
     take_screenshot(context.driver, "Demo Login Page")
 
 
-
 @when('I fill the account information for account StandardUser into the Username field and the Password field')
 def valid_credential(context):
     context.driver.find_element(By.ID, 'user-name').send_keys('standard_user')
@@ -32,6 +32,7 @@ def valid_credential(context):
     context.driver.find_element(By.ID, 'password').send_keys('secret_sauce')
     time.sleep(3)
     take_screenshot(context.driver, "account StandardUser")
+
 
 @when('I fill the account information for account LockedOutUser into the Username field and the Password field')
 def step_impl(context):
@@ -53,8 +54,9 @@ def login_button(context):
 def main_page(context):
     url = 'https://www.saucedemo.com/inventory.html'
     assert context.driver.current_url == url
-    time.sleep(3)
     take_screenshot(context.driver, "I am redirected to the Demo Main Page")
+    time.sleep(3)
+
 
 @then ('I verify the App Logo exists')
 def app_logo(context):
